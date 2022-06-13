@@ -247,8 +247,12 @@ runs:
         echo "## building pkg"
         sudo rm -Rf /var/cache/manjaro-tools/pkg/stable/x86_64/*
         echo "::set-output name=file-path::/var/cache/manjaro-tools/pkg/stable/x86_64/"
-        cd /github
-        sudo buildpkg -p workspace
+        ls
+        
+        uname -r
+        free -h
+        cat /proc/cpuinfo
+        sudo buildpkg -p PKGBUILD
     # - id: hash
     #   shell: bash
     #   run: |
