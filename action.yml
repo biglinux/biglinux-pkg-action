@@ -253,7 +253,7 @@ runs:
 
         mkdir -p $GITHUB_WORKSPACE/pkgs
 
-        echo "PKGDEST = $HOME/work/pkgs" | sudo tee -a /etc/makepkg.conf
+        echo "PKGDEST = $GITHUB_WORKSPACE/pkgs" | sudo tee -a /etc/makepkg.conf
         echo "PACKAGER = Bruno Goncalves <bigbruno@gmail.com>" | sudo tee -a /etc/makepkg.conf
         echo "GPGKEY = 45EC44879815E2A6" | sudo tee -a /etc/makepkg.conf
         echo '[biglinux]
