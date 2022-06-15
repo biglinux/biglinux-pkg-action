@@ -261,8 +261,8 @@ runs:
 
 
         sudo cp /etc/chrootbuild/pacman.conf.x86_64 /etc/pacman.conf
-        sudo sed -i "s/@BRANCH@/stable/g" /etc/pacman.conf
-        sudo sed -i "s|@MIRROR@|https://manjaro.moson.eu|g" /etc/pacman.conf
+        sudo sed -i "s/@BRANCH@/$BRANCH/g" /etc/pacman.conf
+        sudo sed -i "s|@MIRROR@|$BUILD_MIRROR|g" /etc/pacman.conf
         #sudo pacman --noconfirm -Sy manjaro-keyring archlinux-keyring biglinux-keyring
         sudo pacman-key --init
         sudo pacman-key --populate manjaro archlinux biglinux
@@ -275,9 +275,9 @@ runs:
       shell: bash
       run: |
         echo "## calculating hashes"
-        sha1sum ${{ steps.image-build.outputs.file-path }} >${{ steps.image-build.outputs.file-path }}.sha1
-        sha256sum ${{ steps.image-build.outputs.file-path }} >${{ steps.image-build.outputs.file-path }}.sha256
-        sha512sum ${{ steps.image-build.outputs.file-path }} >${{ steps.image-build.outputs.file-path }}.sha512
+        sha1sum ${{ steps.image-build.outputs.file-path }}* >${{ steps.image-build.outputs.file-path }}hash.sha1
+        #sha256sum ${{ steps.image-build.outputs.file-path }} >${{ steps.image-build.outputs.file-path }}.sha256
+        #sha512sum ${{ steps.image-build.outputs.file-path }} >${{ steps.image-build.outputs.file-path }}.sha512
     - id: gpg_sign
       shell: bash
       run: |
