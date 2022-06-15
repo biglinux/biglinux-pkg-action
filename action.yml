@@ -297,7 +297,7 @@ runs:
         touch /home/runner/.ssh/github_actions
         chmod 600 /home/runner/.ssh/github_actions
         ssh-agent -a /tmp/ssh_agent.sock > /dev/null
-        echo "::set-output name=upload-files::./${{ steps.image-build.outputs.file-path }}+(|*.sha*|*.pkg.*|*.sig|*.torrent)"
+        echo "::set-output name=upload-files::./${{ steps.image-build.outputs.file-path }}+(|*.sha|*.zst|*.sig|*.torrent)"
         mkdir -p ${{ inputs.edition }}/${{ inputs.version }}
     - name: upload-cdn77
       shell: bash -O extglob {0}
