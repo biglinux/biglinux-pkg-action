@@ -271,8 +271,6 @@ runs:
 
         cd "$(echo $GITHUB_REPOSITORY | cut -f2 -d'/')"
         sudo PKGDEST="$GITHUB_WORKSPACE/pkgs" chrootbuild -H -p PKGBUILD
-        sudo apt install tmate
-        tmate
     # - id: hash
     #   shell: bash
     #   run: |
